@@ -1,14 +1,13 @@
 import Header from "./Header";
 
 
-import { BG_URL } from "../utils/constants";
+import { BG_URL, USER_AVATAR } from "../utils/constants";
 import { useRef, useState } from "react";
 
 import { checkValidData } from "../utils/validate";
 
 import {auth} from "../utils/firebase";
 
-import { useNavigate } from "react-router-dom";
 
 import { createUserWithEmailAndPassword , signInWithEmailAndPassword ,updateProfile} from "firebase/auth";
 import { useDispatch } from "react-redux";
@@ -21,7 +20,7 @@ const Login = () =>{
 
     const [error ,setError] = useState(" ");
 
-    const navigate = useNavigate();
+   
 
     const dispatch = useDispatch();
 
@@ -63,7 +62,7 @@ const Login = () =>{
     const user = userCredential.user;
 
     updateProfile(user, {
-      displayName: "name.current.value", photoURL: "https://avatars.githubusercontent.com/u/185581145?v=4"
+      displayName: "name.current.value", photoURL: USER_AVATAR
     }).then(() => {
 
       const {uid, email, displayName,photoURL} = auth.currentUser;
@@ -74,7 +73,7 @@ const Login = () =>{
          displayName:displayName,
          photoURL:photoURL}))
      
-      navigate("/browse")
+    
     }).catch((error) => {
       // An error occurred
       // ...
@@ -84,7 +83,7 @@ const Login = () =>{
 
 
     
-    navigate("/browse")
+    
     // ...
   })
   .catch((error) => {
@@ -112,7 +111,6 @@ signInWithEmailAndPassword(auth, email.current.value,password.current.value)
     // Signed in 
     const user = userCredential.user;
 
-    navigate("/browse");
     // ...
   })
   .catch((error) => {
