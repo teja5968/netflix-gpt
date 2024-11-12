@@ -16,6 +16,7 @@ import { SUPPORTED_LANGUAGES } from "../utils/constants";
 
 
 import { toggleGptSearchView } from "../utils/gptSlice";
+import { changeLanuguage } from "../utils/configSlice";
 
 const Header = () => {
 
@@ -24,6 +25,10 @@ const Header = () => {
     const navigate = useNavigate();
 
     const user = useSelector(store=>store.user);
+
+    const showGptSearch = useSelector(store => store.gpt.showGptSearch)
+
+    
 
     const handleGptSearch = () =>{
 
@@ -82,6 +87,11 @@ const Header = () => {
 
           return () => unsubscribe();
     },[])
+
+    const handleLanuguageChange = (e) =>{
+
+       dispatch(changeLanuguage(e.target.value))
+    }
     
 
 
@@ -94,7 +104,8 @@ const Header = () => {
             {user && (
                 <div className="flex p-2">
 
-                    <select className=" p-2 bg-gray-900 text-white m-2 ">
+                  {showGptSearch &&  ( 
+                    <select className=" p-2 bg-gray-900 text-white m-2 " onChange={handleLanuguageChange}>
 
                         {SUPPORTED_LANGUAGES.map((lang) => (
                             
@@ -104,8 +115,8 @@ const Header = () => {
                                 
                                 ))}
                        
-                    </select>
-                    <button className="py-2 px-4 bg-purple-800 text-white mx-4 my-2 rounded-lg" onClick={handleGptSearch}>GPT Search</button>
+                    </select> )}
+                    <button className="py-2 px-4 bg-purple-800 text-white mx-4 my-2 rounded-lg" onClick={handleGptSearch}> {showGptSearch ? "Home Page" : "GPT Search"}</button>
 
                 <img className="w-12 h-12 p-2" src={user.photoURL} alt="usericon" />
 

@@ -36,3 +36,4 @@ export const BG_URL =
   }
 
 ]
+export const OPENAI_KEY = "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"
