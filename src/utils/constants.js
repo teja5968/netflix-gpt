@@ -36,4 +36,5 @@ export const BG_URL =
   }
 
 ]
-export const OPENAI_KEY = "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"
+export const OPENAI_KEY = "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"
+
