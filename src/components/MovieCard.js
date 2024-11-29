@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 const MovieCard = ({posterPath ,movieInfo}) => {
 
   
-  console.log("movies",movieInfo)
 
 
   const navigate = useNavigate();
@@ -24,7 +23,7 @@ const MovieCard = ({posterPath ,movieInfo}) => {
 
  
   return (
-    <div className=' w-48 pr-4 '>
+    <div className=' w-36 md:w-48 pr-4 '>
       
 
         <img src = {IMG_CDN_URL + posterPath} alt = "Movie Card"  onClick={handle}/>

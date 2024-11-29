@@ -136,10 +136,10 @@ signInWithEmailAndPassword(auth, email.current.value,password.current.value)
 
        <div className="absolute">
 
-       <img src = {BG_URL} alt  = "background-image" />
+       <img className = "w-screen h-screen object-cover" src = {BG_URL} alt  = "background-image" />
        </div>
 
-       <form  onSubmit = {(e)=>e.preventDefault()}className="w-3/12 absolute p-12 bg-black my-36 mx-auto right-0 left-0 text-white bg-opacity-80" >
+       <form  onSubmit = {(e)=>e.preventDefault()}className=" lg:w-3/12 w-10/12 sm:w-7/12 md:5/12 p-12 bg-black absolute my-36 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80" >
          
      
        <h1 className="font-bold py-2 text-3xl">{isSignInForm ? "Sign In" : "Sign Up"}</h1>
